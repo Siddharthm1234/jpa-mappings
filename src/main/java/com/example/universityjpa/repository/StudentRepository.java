@@ -8,6 +8,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.List;
+import java.util.Set;
 
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Long> {
@@ -29,4 +31,7 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     @Transactional // this goes in service method level - Generally
     @Query(value = "update student s set s.first_name=?1 where s.email_id=?2",nativeQuery = true)
     int updateStudentNameByEmailId(String firstName, String emailId);
+
+    //@Query(value = "select s from Student s where s.courseId is null")
+    List<Student> findByCoursesIsNull();
 }

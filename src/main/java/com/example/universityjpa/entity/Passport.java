@@ -11,6 +11,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Table(name = "passport")
 @ToString(exclude = {"student"})
+@EqualsAndHashCode(exclude="student")
 public class Passport {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 import java.util.Set;
 
@@ -17,6 +18,7 @@ class CourseRepositoryTest {
     private CourseRepository courseRepository;
 
     @Test
+    @Transactional
     public void retrieveReviewsForCourse(){
         Optional<Course> courseOptional = courseRepository.findById(3L);
         Set<Review> reviews = courseOptional.get().getReviews();
