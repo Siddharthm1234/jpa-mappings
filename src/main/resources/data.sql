@@ -19,3 +19,9 @@ insert into review (rating, description, course_id) values ('3', 'Good Java cour
 insert into review (rating, description, course_id) values ('5', 'Awesome Java course', 1);
 insert into review (rating, description, course_id) values ('5', 'Loved it course', 2);
 insert into review (rating, description, course_id) values ('5', 'Spring <3', 2);
+
+--MANY(Student) TO MANY(Course)
+--Student & Course entity to be added before student_course table where it is (FK)
+insert into student_course (student_id, course_id) values (1, 1);
+insert into student_course (student_id, course_id) values (1, 2);
+insert into student_course (student_id, course_id) values (3, 3);

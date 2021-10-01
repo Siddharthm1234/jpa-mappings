@@ -12,7 +12,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "course")
-@ToString(exclude = {"review"})
+@ToString(exclude = {"reviews", "students"})
 public class Course {
 
     @Id
@@ -23,7 +23,7 @@ public class Course {
     private Integer credit;
 
     //FetchType is Lazy for Many side of entity in Many-to-One by default
-    @OneToMany(mappedBy = "course", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "course")
     private Set<Review> reviews = new HashSet<>();
 
     public void addReview(Review review){
@@ -32,6 +32,20 @@ public class Course {
 
     public void removeReview(Review review){
         this.reviews.remove(review);
+    }
+
+    @ManyToMany(mappedBy = "courses")
+    private Set<Student> students = new HashSet<>();
+
+    public void addStudent(Student student){
+        if(this.students == null){
+            this.students = new HashSet<>();
+        }
+        this.students.add(student);
+    }
+
+    public void removeStudent(Student student){
+        this.students.remove(student);
     }
 
 }

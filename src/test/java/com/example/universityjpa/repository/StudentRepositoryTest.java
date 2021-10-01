@@ -1,5 +1,6 @@
 package com.example.universityjpa.repository;
 
+import com.example.universityjpa.entity.Course;
 import com.example.universityjpa.entity.Guardian;
 import com.example.universityjpa.entity.Passport;
 import com.example.universityjpa.entity.Student;
@@ -10,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -27,6 +29,7 @@ class StudentRepositoryTest {
     }
 
 
+    /*** ----- ONE TO ONE ------***/
     @Test
     @Transactional
     public void getStudentAndPassport(){
@@ -37,7 +40,7 @@ class StudentRepositoryTest {
     }
 
 
-
+    /*** ----- ONE TO ONE ------***/
     @Test
     @Transactional
     public void getAllStudentAndPassport(){
@@ -45,5 +48,13 @@ class StudentRepositoryTest {
         System.out.println("students = " + students);
     }
 
+    /*** ----- MANY TO ONE ------***/
+    @Test
+    @Transactional
+    public void getStudentAndCourse(){
+        Optional<Student> studentOptional = studentRepository.findById(1L);
+        Set<Course> courses = studentOptional.get().getCourses();
+        System.out.println("courses = " + courses);
+    }
 
 }

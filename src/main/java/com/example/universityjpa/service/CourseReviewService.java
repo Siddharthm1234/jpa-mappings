@@ -2,6 +2,7 @@ package com.example.universityjpa.service;
 
 import com.example.universityjpa.entity.Course;
 import com.example.universityjpa.entity.Review;
+import com.example.universityjpa.entity.Student;
 import com.example.universityjpa.repository.CourseRepository;
 import com.example.universityjpa.repository.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,4 +33,5 @@ public class CourseReviewService {
             reviewRepository.save(review);
         }
     }
+
 }
